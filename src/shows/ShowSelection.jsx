@@ -1,5 +1,4 @@
 import "./shows.css";
-import tvShows from "./data"
 
 /** A navbar that allows users to choose between a list of shows */
 export default function ShowSelection({ shows, setSelectedShow }) {

@@ -1,10 +1,13 @@
 import "./shows.css";
 
-import EpisodeList from "../episodes/EpisodeList"
+import EpisodeList from "../episodes/EpisodeList";
 import EpisodeDetails from "../episodes/EpisodeDetails";
+import { useState } from "react";
 
 /** Allows users to browse through the episodes of the given show */
 export default function ShowDetails({ show }) {
+  const [selectedEpisode, setSelectedEpisode] = useState();
+
   if (!show) {
     return (
       <section className="show-details">
@@ -16,15 +19,15 @@ export default function ShowDetails({ show }) {
   return (
     <div className="show-details">
       <div className="handle">
-        <h2> selected color is {show}</h2>
+        <h2> Here is the selected Show</h2>
         <main>
-        <EpisodeList 
-        name ={name} 
-        episodes ={show.episodes} 
-        selectedEpisode = {show.selectedEpisode} 
-        setSelectedEpisode={show.setSelectedEpisode}/>
-        <EpisodeDetails 
-        episode={show.episode}/>
+          <EpisodeList
+            name={show.name}
+            episodes={show.episodes}
+            selectedEpisode={selectedEpisode}
+            setSelectedEpisode={setSelectedEpisode}
+          />
+          <EpisodeDetails episode={selectedEpisode} />
         </main>
       </div>
     </div>
